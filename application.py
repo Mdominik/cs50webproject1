@@ -28,7 +28,7 @@ db = scoped_session(sessionmaker(bind=engine))
 
 #user's id
 userCounter=0
-session["id"]=0
+
 
 #find highest session in the database to be up to date with id SERIAL KEY
 def getHighestSessionID():
@@ -76,7 +76,10 @@ def someoneLoggedIn():
 
 @app.route("/")
 def index():
-
+    if id in session:
+        pass
+    else:
+        session["id"]=0
     if someoneLoggedIn():
         user = findUserByID()
         userReviews = db.execute("SELECT * FROM reviews WHERE iduser = :iduser", {"iduser":session["id"]}).fetchall()
