@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Books app
+{% endblock %}
+
+{% block body %}
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="{{ url_for('index') }}">Home</a>
+  </li>
+  {% if user == None %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('signup') }}">Sign up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('bookQuery') }}">Search books</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('signout') }}">Sign out</a>
+    </li>
+  {% endif %}
+</ul>
+<div class="container">
+    {% if user != None %}
+    <div class="alert alert-success" role="alert">
+      Logged in as: {{user.username}}
+    </div>
+    <h3 class="text-center text-info">Your comments:</h3>
+    {% else %}
+    <h3 class="text-center text-info">Books app</h3>
+
+    {% endif %}
+    {% for userReview in userReviews %}
+    <div class="card">
+      <img class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">ISBN: {{ userReview.isbn }}</p>
+        <p class="card-text">Date: {{ userReview.date }}</p>
+        {% for i in range(userReview.rating|int) %}
+        <span class="fa fa-star checked"></span>
+        {% endfor %}
+        {% for i in range(5-userReview.rating|int) %}
+        <span class="fa fa-star"></span>
+        {% endfor %}
+        <br/>
+        <p>
+          {{ userReview.comment }}
+
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
