@@ -32,6 +32,7 @@ userCounter=0
 
 #find highest session in the database to be up to date with id SERIAL KEY
 def getHighestSessionID():
+
     id = db.execute("SELECT id FROM users ORDER BY id DESC LIMIT 1").fetchone()
     db.commit()
     for i in id:
@@ -70,11 +71,12 @@ def getBookByISBN(isbn):
     return book
 
 def someoneLoggedIn():
+
     return session["id"] != 0
 
 @app.route("/")
 def index():
-    
+    session["id"] = 0
     if someoneLoggedIn():
         user = findUserByID()
         userReviews = db.execute("SELECT * FROM reviews WHERE iduser = :iduser", {"iduser":session["id"]}).fetchall()
