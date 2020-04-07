@@ -80,6 +80,7 @@ def index():
         if(someoneLoggedIn()):
             pass
     except KeyError:
+        session["id"]=0
         print("NO SESSION!!!!!!!!!!!!!!!!!!!!!!!!")
     if someoneLoggedIn():
         user = findUserByID()
