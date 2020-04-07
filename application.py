@@ -76,8 +76,11 @@ def someoneLoggedIn():
 
 @app.route("/")
 def index():
-    if id not in session:
-        session["id"]=0
+    try:
+        if(someoneLoggedIn()):
+            pass
+    except KeyError:
+        print("NO SESSION!!!!!!!!!!!!!!!!!!!!!!!!")
     if someoneLoggedIn():
         user = findUserByID()
         userReviews = db.execute("SELECT * FROM reviews WHERE iduser = :iduser", {"iduser":session["id"]}).fetchall()
