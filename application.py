@@ -76,7 +76,7 @@ def someoneLoggedIn():
 
 @app.route("/")
 def index():
-    session["id"] = 0
+    
     if someoneLoggedIn():
         user = findUserByID()
         userReviews = db.execute("SELECT * FROM reviews WHERE iduser = :iduser", {"iduser":session["id"]}).fetchall()
