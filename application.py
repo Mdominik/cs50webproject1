@@ -76,9 +76,7 @@ def someoneLoggedIn():
 
 @app.route("/")
 def index():
-    if id in session:
-        pass
-    else:
+    if id not in session:
         session["id"]=0
     if someoneLoggedIn():
         user = findUserByID()
