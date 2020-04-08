@@ -26,6 +26,7 @@ Techstack: Python3.5, Flask, Bootstrap, SQL
 
 
 **Files**
+
 The projects consists of:
 - application.py (Flask application)
 - bookRecord.html (result of book search)
@@ -37,3 +38,26 @@ The projects consists of:
 
 
 
+**SQL Tables**
+
+books:
+
+1. *isbn* character varying	
+2. *title* character varying	
+3. *author* character varying	
+4. *year* integer
+
+users:
+
+1. *id*	integer Auto Increment [nextval('users_id_seq')]	
+2. *username*	character varying	
+3. *password*	character varying
+
+reviews:
+
+1. *idreview*	integer Auto Increment [nextval('reviews_idreview_seq')]	
+2. *iduser*	integer	
+3. *isbn*	character varying	
+4. *rating*	numeric	
+5. *comment*	text	
+6. *date*	date NULL
