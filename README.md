@@ -2,7 +2,7 @@
 ### Project 1
 
 In short, the website allows for searching for books in a database of 5000 records and sharing user's comments on specific books. It is possible to sign up an account and see other people's reviews.
-Techstack: Python3.5, Flask, Bootstrap, SQL
+Techstack: Python3.6, Flask, Bootstrap, SQL
 
 **Requirements:**
 
