@@ -61,3 +61,5 @@ reviews:
 4. *rating*	numeric	
 5. *comment*	text	
 6. *date*	date NULL
+
+LINK: https://dommaz-cs50-project1-books.herokuapp.com/
