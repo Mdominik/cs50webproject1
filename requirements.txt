@@ -5,4 +5,4 @@ SQLAlchemy
 gunicorn
 gevent
 requests
-werkzeug==0.16.0
+werkzeug==2.2.3
